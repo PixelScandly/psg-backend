@@ -7,4 +7,4 @@ services:
     startCommand: gunicorn app:app
     envVars:
       - key: FMP_API_KEY
-        value: YOUR_FMP_API_KEY
+        value: T0b52Lczz6Tif0xQbMMSYKOKty9HhmTe
