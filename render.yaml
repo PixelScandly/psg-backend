@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: psg-api
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: gunicorn app:app
+    envVars:
+      - key: FMP_API_KEY
+        value: YOUR_FMP_API_KEY
