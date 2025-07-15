@@ -9,6 +9,23 @@ CORS(app)
 FMP_API_KEY = os.getenv("FMP_API_KEY")
 FMP_BASE = "https://financialmodelingprep.com/api/v3"
 
+@app.route("/psg/<ticker>")
+def psg(ticker):
+    try:
+        ps = get_ps_ratio(ticker)
+        growth = get_sales_growth(ticker)
+        if ps is None or growth is None or growth == 0:
+            return jsonify({"error": "Data missing"}), 400
+        psg_value = ps / (growth * 100)
+        return jsonify({
+            "ticker": ticker.upper(),
+            "p/s": ps,
+            "sales_growth_pct": growth * 100,
+            "psg": psg_value
+        })
+    except Exception as e:
+        return jsonify({"error": "Server error", "details": str(e)}), 500
+
 def get_ps_ratio(ticker):
     url = f"{FMP_BASE}/ratios/{ticker}?apikey={FMP_API_KEY}"
     res = requests.get(url).json()
