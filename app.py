@@ -18,7 +18,7 @@ def get_ps_ratio(ticker):
     data = res.json()
     app.logger.info(f"PS Ratio API response for {ticker}: {data}")
     if isinstance(data, list) and len(data) > 0:
-        ps_ratio = data[0].get("priceToSalesRatioTTM")
+        ps_ratio = data[0].get("priceToSalesRatio")
         if ps_ratio is not None:
             return ps_ratio
     return None
