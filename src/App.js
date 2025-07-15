@@ -11,7 +11,8 @@ function App() {
     setError("");
     setData(null);
     try {
-      const res = await fetch(`https://psg-backend-0av3.onrender.com${ticker.toUpperCase()}`);
+      const res = await fetch(`https://psg-backend-0av3.onrender.com/psg/${ticker.toUpperCase()}`);
+
       if (!res.ok) {
         throw new Error("Ticker not found or data missing");
       }
