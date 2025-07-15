@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-FMP_API_KEY = os.getenv("FMP_API_KEY")
+FMP_API_KEY = os.getenv("T0b52Lczz6Tif0xQbMMSYKOKty9HhmTe")
 FMP_BASE = "https://financialmodelingprep.com/api/v3"
 
 def get_ps_ratio(ticker):
