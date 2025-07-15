@@ -12,12 +12,15 @@ FMP_BASE = "https://financialmodelingprep.com/api/v3"
 def get_ps_ratio(ticker):
     url = f"{FMP_BASE}/ratios/{ticker}?apikey={FMP_API_KEY}"
     res = requests.get(url).json()
+    print(f"PS Ratio API response for {ticker}:", res)
     return res[0]["priceToSalesRatioTTM"] if res else None
 
 def get_sales_growth(ticker):
     url = f"{FMP_BASE}/financial-growth/{ticker}?apikey={FMP_API_KEY}"
     res = requests.get(url).json()
+    print(f"Sales Growth API response for {ticker}:", res)
     return res[0]["revenueGrowth"] if res else None
+
 
 @app.route("/psg/<ticker>")
 def psg(ticker):
